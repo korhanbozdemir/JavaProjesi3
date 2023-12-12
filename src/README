@@ -1,0 +1,99 @@
+Java Project 3
+Proje Konusu: Banka Uygulaması
+
+1. Customer (Müşteri) Sınıfı
+   - Fields: customerId (int), ﬁrstName (String), lastName (String), city (String)
+   - Cunstructors: Customer(), Customer(int customerId, String ﬁrstName, String lastName, String city)
+   - GeƩer ve SeƩer metodları
+   - toString() metodu
+
+2. AccountType (Hesap Tipi) Enum Sınıfı
+   - Sabitler: CHECKING (Vadesiz Hesap), SAVINGS (Tasarruf Hesabı), CREDIT(Kredi Hesabı)
+
+3. Account (Hesaplar) Sınıfı
+   - Fields: accountId (int), customerId (int), balance (double), accountType (AccountType)
+   - Constructors: Account(){}, Account(int accountId, int customerId, AccountType accountType){}
+   - GeƩer ve SeƩer metodları
+   - depositToAmount(double amount) metodu
+   - withdrawToAmount(double amount) metodu
+   - toString() metodu
+
+4. BankSimulaƟon Sınıfı
+   - Fields: customers (Map<Integer, Customer>), accounts (List<Account>), scanner (Scanner)
+- Constructors: BankSimulaƟon(){},
+BankSimulaƟon() {
+ customers = new HashMap<>();
+ accounts = new ArrayList<>();
+ scanner = new Scanner(System.in);
+
+}
+
+   - Ana metot: public staƟc void main(String[] args)
+   - run() metodu
+   - listCustomers() metodu
+
+   - listCustomerAccounts(Customer customer) metodu
+   - addCustomer() metodu
+   - customerOperaƟonsMenu() metodu
+   - customerOperaƟons(Customer customer) metodu
+   - openNewAccount(Customer customer) metodu
+   - depositToAccount(Customer customer) metodu
+   - withdrawToAccount(Customer customer) metodu
+   - checkBalance(Customer customer) metodu
+   - getAccountById(int accountId) metodu
+
+Proje Yapısı:
+
+BankingSystem
+    ├── src
+    │   ├── Customer.java
+    │   ├── AccountType.java
+    │   ├── Account.java
+    │   └── BankSimulaƟon.java
+    └── README.txt (İsteğe Bağlı)
+
+**Görevler**
+
+1. Proje yapısını oluşturun ve verilen sınıﬂarı ilgili dosyalara yerleşƟrin.
+2. "Customer" sınıķna geƩer ve seƩer metodları ekleyin.
+3. "Account" sınıķna "depositToAmount()" ve "withdrawToAmount()" metodlarını ekleyin.
+4. "BankSimulaƟon" sınıķnda müşteri ekleme ve listeleme fonksiyonlarını tamamlayın.
+5. "BankSimulaƟon" sınıķnda yeni hesap açma ve hesap işlemleri fonksiyonlarını tamamlayın.
+6. Main metodu içinde uygulamayı başlaƨn ve kullanıcı arayüzü ile işlemleri gerçekleşƟrin.
+
+**Notlar**
+- Proje sırasında hatalı girişlere karşı uygun hata yöneƟmi isteğe bağlıdır..
+
+
+
+EK BİLGİLER:
+
+`BankSimulasyonun` sınıf, banka işlemlerini yöneten ve kullanıcı arayüzü sağlayan ana sınıfıdır.
+`main` metodu bu sınıfa yer alır ve banka simulasyonunu başlar. Aynı zamanda `run`
+metodu ana menüyü oluşturur ve kullanıcıdan girdiler alarak işlemleri yönlendirir.
+`BankSimulaƟon` sınıķ içinde müşterileri ve hesapları temsil eden maps ve liste şeklinde
+veri yapıları (customers ve accounts) kullanılmaktadır.
+
+`Customer` sınıf, bankadaki müşterileri temsil eder ve müşterilere ait bilgileri içerir. Daha
+doğrusu, bir Customer nesnesi oluşturduğumuzda, bu nesne vasıtasıyla Customer sınıķnın
+ﬁeldlerini (değişkenlerini) ve metodlarını tutacak ve etkileyecek hale gelmiş oluruz.
+
+`Account` sınıf, bankadaki hesapları temsil eder ve hesaplara ait bilgileri içerir. Daha
+doğrusu Account cinsinden oluşturduğumuz nesne, hesap bilgilerini ve metodlarını
+tutmamızı ve onları kullanmamızı sağlar... Account sınıķ`withdrawToAmount` (para çek),
+`depositToAmount` gibi işlem metotlarını içerir.
+
+`AccountType` enum, vadeli-vadesiz ve kredi hesabı türlerini temsil eder.
+
+`BankSimulaon` sınıf içindeki `accounts` ve `customers` değişkenleri `ﬁnal` olmasının
+nedeni, bu değişkenlere atanan referansların sonradan değişƟrilmesini engellemek ve
+programın daha güvenli ve kontrol edilebilir olmasını sağlamakƨr. `ﬁnal` anahtar
+kelimesiyle tanımlanan bir değişkenin değeri sadece bir kez atanabilir ve sonradan
+değişƟrilemez.
+
+Örneğin, `customers` değişkeni için:
+`private ﬁnal Map<Integer, Customer> customers;`
+Bu tanımlama, `customers` değişkeninin referansının değişƟrilemeyeceği anlamına gelir.
+Ancak, `customers` değişkenine atanan `HashMap` nesnesinin içeriği yine de
+değişƟrilebilir. Yani, `customers` değişkeninin referansı aynı kalacak şekilde müşteri
+bilgileri eklenebilir, güncellenebilir veya silinebilir.
